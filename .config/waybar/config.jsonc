@@ -26,8 +26,8 @@
         // "sway/language",
         "battery",
         "battery#bat2",
-        "clock",
-        "custom/power"
+        "clock"
+        // "custom/power"
     ],
     // Modules configuration
     "hyprland/workspaces": {

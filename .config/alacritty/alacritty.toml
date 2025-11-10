@@ -14,9 +14,9 @@ style = { shape = "Block", blinking = "Always" }
 
 [colors.bright]
 black = "0x282828"
-blue = "0x80a0ff"
+blue = "0x060761"
 cyan = "0x8cf3f2"
-green = "0x9cffb0"
+green = "0x41ffa7"
 magenta = "0xff92df"
 red = "0xff6f6b"
 white = "0xe0e0e0"
@@ -30,7 +30,7 @@ green = "0x8cffab"
 magenta = "0xff85c5"
 red = "0xff5555"
 white = "0xb2b2b2"
-yellow = "0xffc978"
+yellow = "0xf8c61e"
 
 [colors.primary]
 background = "0x140D20"
@@ -43,15 +43,15 @@ cursor = "0xb2b2b2"
 size = 14
 
 [font.bold]
-family = "AdwaitaMono Nerd Font"
+family = "0XProto Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "AdwaitaMono Nerd Font"
+family = "0XProto Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "AdwaitaMono Nerd Font"
+family = "0XProto Nerd Font"
 style = "Regular"
 
 [mouse]

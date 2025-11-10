@@ -17,11 +17,14 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # Chroot prompt
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+# --- Fedora-friendly prompt with Git branch support ---
+
+# Load git-prompt helper for __git_ps1
+if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
+    . /usr/share/git-core/contrib/completion/git-prompt.sh
 fi
 
-# Fancy prompt with Git branch support
+# Always color if TERM supports it
 case "$TERM" in
     xterm-color|*-256color|xterm-kitty) color_prompt=yes;;
 esac
@@ -34,19 +37,19 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then 
-	PS1='${debian_chroot:+\[\033[32m\](\debian_chroot)\[\033[00m\]}' 
-	PS1+='\[\033[92m\]\u@\h\[\033[00m\]:'
-	PS1+='\[\033[01;34m\]\w\[\033[00m\]'
-	PS1+='$(__git_ps1 " \[\033[33m\](%s)\[\033[00m\]")\n$ '
-else 
-	PS1='${debian_chroot:+(\debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\n$ '
+if [ "$color_prompt" = yes ]; then
+    PS1='\[\033[92m\]\u '
+    PS1+='\[\033[01;34m\]\w\[\033[00m\]'
+    PS1+='$(__git_ps1 " \[\033[33m\](%s)\[\033[00m\]")'
+    PS1+='\n '
+else
+    PS1='\u@\h:\w$(__git_ps1 " (%s)")\n$ '
 fi
 
-# Xterm title
+# Xterm/rxvt window title
 case "$TERM" in
     xterm*|rxvt*)
-        PS1="\[\e]0;${debian_chroot:+(\$debian_chroot)}\u@\h: \w\a\]$PS1"
+        PS1="\[\e]0;\u@\h: \w\a\]$PS1"
         ;;
 esac
 
@@ -58,6 +61,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Aliases
+alias vi='vimx'
 alias ll='ls -alF'
 alias la='ls -A'
 alias lm='ls --almost-all'
@@ -162,8 +166,8 @@ pur='\[\033[38;5;135m\]'  # Bright Purple
 cyn='\[\033[38;5;51m\]'   # Bright Cyan
 wht='\[\033[38;5;15m\]'   # Pure White
 
-export CWPROOT="$HOME/SeismicUnix"
-export PATH="$PATH:$CWPROOT/bin"
+export CWPROOT=/usr/local/cwp
+export PATH=$PATH:$CWPROOT/bin
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -180,4 +184,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
+
+# Created by `pipx` on 2025-09-27 17:20:54
+export PATH="$PATH:/home/carburauto/.local/bin"
