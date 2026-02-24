@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e  # exit on error
 
-# List of packages
 programs=(
     git
     curl
@@ -20,7 +19,6 @@ programs=(
 	cliphist
 )
 
-# Detect package manager
 if command -v apt >/dev/null; then
     pm="apt"
     sudo apt update

@@ -67,7 +67,8 @@ alias la='ls -A'
 alias lm='ls --almost-all'
 alias l='ls -CF'
 alias rm='trash-put' # Safe rm
-alias cls='tput reset'
+# alias cls='tput reset'
+alias cls='printf "\e[H\e[2J"'
 alias ext='exit'
 alias scb='source ~/.bashrc'
 alias scv='source .venv/bin/activate' # source python enviroment
@@ -143,6 +144,11 @@ headclip() { # Functin to copy the first n lines of a file
     echo "$output copied!"
 }
 
+# Load private API keys if the file exists
+if [ -f "$HOME/.api_keys" ]; then
+    source "$HOME/.api_keys"
+fi
+
 set -o vi # Set bash to use vi mode for command editing
 bind -s 'set completion-ignore-case on' # Ignore sensitive case on completion
 
@@ -187,4 +193,7 @@ unset __conda_setup
 # . "$HOME/.cargo/env"
 
 # Created by `pipx` on 2025-09-27 17:20:54
-export PATH="$PATH:/home/carburauto/.local/bin"
+# export PATH="$PATH:/home/carburauto/.local/bin"
+export JAVA_HOME=/usr/lib/jvm/jdk-22.0.2-oracle-x64
+export PATH=$JAVA_HOME/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"

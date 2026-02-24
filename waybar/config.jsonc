@@ -1,0 +1,31 @@
+// -*- mode: jsonc -*-
+{
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 10, // Waybar height (to be removed for auto height)
+    "spacing": 5, // Gaps between modules (4px)
+    "margin-top": 5,
+    "margin-bottom": 5,
+
+    "include": ["~/.config/waybar/modules.json"],
+
+    // Choose the order of the modules
+    "modules-left": [
+      "hyprland/workspaces"
+    ],
+    "modules-center": [
+      "custom/exit",
+      "clock",
+      "custom/upgrades"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "temperature",
+        "cpu",
+        "memory",
+        "power-profiles-daemon",
+        "backlight",
+        "battery",
+		"custom/notification"
+    ]
+}

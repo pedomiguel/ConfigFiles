@@ -1,0 +1,171 @@
+/* Global Styles */
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Ubuntu Nerd Font", "Ubuntu", sans-serif;
+  font-size: 14px;
+  min-height: 0;
+}
+
+/* The Bar Container */
+window#waybar {
+  background: transparent;
+  color: #c0caf5;
+  transition-property: background-color;
+  transition-duration: .5s;
+  border-radius: 10px;
+}
+
+/* Module Grouping Styling */
+#workspaces,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#backlight,
+#temperature,
+#cpu,
+#memory,
+#power-profiles-daemon,
+#tray,
+#keyboard-state,
+#custom-exit,
+#custon-notification,
+#custom-upgrades {
+  padding: 2 10px;
+  margin: 4px 2px;
+  background-color: #24283b;
+  border-radius: 8px;
+}
+
+/* Left Modules: Workspaces */
+#workspaces button {
+  padding: 0 5px;
+  color: #565f89;
+  background: transparent;
+  /* Use 'active' for Hyprland workspaces */
+}
+
+#workspaces button.active {
+  color: #7aa2f7;
+  border-bottom: 2px solid #7aa2f7;
+}
+
+#workspaces button.urgent {
+  color: #f7768e;
+}
+
+#workspaces button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inherit;
+  text-shadow: inherit;
+}
+
+/* Center Modules */
+#clock {
+  font-weight: bold;
+  color: #9ece6a;
+}
+
+#custom-exit {
+  color: #f7768e;
+  font-size: 16px;
+}
+
+#custom-upgrades {
+  color: #bb9af7;
+}
+
+#custon-notification {
+  color: #e0af68;
+}
+
+/* Right Modules */
+#pulseaudio {
+  color: #7aa2f7;
+}
+
+#pulseaudio.muted {
+  color: #565f89;
+  background-color: #414868;
+}
+
+#network {
+  color: #b4f9f8;
+}
+
+#network.disconnected {
+  color: #f7768e;
+  background-color: #414868;
+}
+
+#temperature {
+  color: #ff9e64;
+}
+
+#cpu {
+  color: #bb9af7;
+}
+
+#memory {
+  color: #7dcfff;
+}
+
+#memory.critical {
+  color: #ff5555;
+}
+
+#temperature.critical {
+  background-color: #f7768e;
+  color: #1a1b26;
+}
+
+#backlight {
+  color: #e0af68;
+}
+
+#battery {
+  color: #9ece6a;
+}
+
+#power-profiles-daemon {
+  color: #7dcfff;
+}
+
+#battery.charging, #battery.plugged {
+  color: #9ece6a;
+}
+
+@keyframes blink {
+  to {
+    background-color: #f7768e;
+    color: #1a1b26;
+  }
+}
+
+#battery.critical:not(.charging) {
+  background-color: #f7768e;
+  color: #1a1b26;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#keyboard-state {
+  color: #7dcfff;
+}
+
+#tray {
+  padding-right: 8px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: #f7768e;
+}

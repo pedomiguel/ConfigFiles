@@ -1,0 +1,65 @@
+# .config/alacritty
+
+[env]
+TERM = "xterm-256color"
+
+[keyboard]
+bindings = [
+{ key = "F11", action = "ToggleFullscreen" },
+{ key = "F12", action = "ToggleViMode" },
+]
+
+[cursor]
+style = { shape = "Block", blinking = "Always" }
+
+[colors.primary]
+background = "0x0d0d1b"
+foreground = "0xf0f3f6"
+
+[colors.cursor]
+text = "0x0a0c10"
+cursor = "0xf0f3f6"
+
+[colors.normal]
+black   = "0x7a828e"
+red     = "0xff9492"
+green   = "0x26cd4d"
+yellow  = "0xf0b72f"
+blue    = "0x71b7ff"
+magenta = "0xcb9eff"
+cyan    = "0x39c5cf"
+white   = "0xd9dee3"
+
+[colors.bright]
+black   = "0x9ea7b3"
+red     = "0xffb1af"
+green   = "0x4ae168"
+yellow  = "0xf7c843"
+blue    = "0x91cbff"
+magenta = "0xcb9eff"
+cyan    = "0x39c5cf"
+white   = "0xd9dee3"
+
+[colors.vi_mode_cursor]
+cursor = "0xb2b2b2"
+
+[font]
+size = 12
+
+[font.bold]
+family = "0XProto Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "0XProto Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "0XProto Nerd Font"
+style = "Regular"
+
+[mouse]
+hide_when_typing = true
+
+[window]
+opacity = 1
