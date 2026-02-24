@@ -1,7 +1,7 @@
 {
   "hyprland/workspaces": {
     "disable-scroll": true,
-    "active-only": true,
+    "active-only": false,
     "all-outputs": false,
     "format": "{icon}",
     "persistent-workspaces": {
@@ -138,8 +138,8 @@
     "tooltip": false
   },
   "custom/upgrades": {
-    "format": "󰇚 ",
-    "tooltip-format": "",
+    "format": "󰇚 {}",
+    "tooltip-format": "{}",
     "escape": true,
     "return-type": "json",
     "exec": "~/.config/waybar/scripts/check_upgrades.sh",
