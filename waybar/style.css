@@ -29,8 +29,11 @@ window#waybar {
 #power-profiles-daemon,
 #tray,
 #keyboard-state,
+#custom-media,
+#custom-media-prev,
+#custom-media-next,
 #custom-exit,
-#custon-notification,
+#custom-notification,
 #custom-upgrades {
   padding: 2 10px;
   margin: 4px 2px;
@@ -38,27 +41,42 @@ window#waybar {
   border-radius: 8px;
 }
 
+#workspaces {
+  margin: 4px;
+  background-color: #1a1b26; /* Darker background for the bar area */
+  border-radius: 15px;
+}
+
 /* Left Modules: Workspaces */
 #workspaces button {
-  padding: 0 5px;
-  color: #565f89;
-  background: transparent;
-  /* Use 'active' for Hyprland workspaces */
+    padding: 0 10px;
+    color: #565f89;
+    background: transparent;
+    transition: all 0.3s ease; /* Smooth hover/active transition */
+    border-radius: 15px;
+    margin: 2px;
 }
 
 #workspaces button.active {
-  color: #7aa2f7;
-  border-bottom: 2px solid #7aa2f7;
+    color: #1a1b26;
+    background-color: #7aa2f7; /* Solid background color */
+    padding: 0 15px; /* Slightly wider when active */
+    font-weight: bold;
+}
+
+#workspaces button.visible {
+    color: #7aa2f7;
 }
 
 #workspaces button.urgent {
-  color: #f7768e;
+    color: #1a1b26;
+    background-color: #f7768e;
 }
 
 #workspaces button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: inherit;
-  text-shadow: inherit;
+    background: rgba(122, 162, 247, 0.2);
+    box-shadow: none;
+    text-shadow: none;
 }
 
 /* Center Modules */
@@ -76,7 +94,7 @@ window#waybar {
   color: #bb9af7;
 }
 
-#custon-notification {
+#custom-notification {
   color: #e0af68;
 }
 
@@ -92,48 +110,117 @@ window#waybar {
 
 #network {
   color: #b4f9f8;
+  margin-right: 0;
+  margin-left: 0;
+  border-radius: 0;
 }
 
 #network.disconnected {
   color: #f7768e;
   background-color: #414868;
+  margin-right: 0;
+  margin-left: 0;
+  border-radius: 0;
 }
 
 #temperature {
   color: #ff9e64;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+}
+
+/* Media Player Arrows */
+#custom-media-prev,
+#custom-media-next {
+  color: #7dcfff; /* Matches your default media color */
+  font-size: 16px;
+}
+
+/* Optional: "Pill" effect - removes gaps between the three media modules */
+#custom-media-prev {
+  margin-right: 0;
+  border-radius: 8px 0 0 8px;
+}
+
+#custom-media {
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+}
+
+#custom-media-next {
+  margin-left: 0;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Hover effects for the arrows */
+#custom-media-prev:hover,
+#custom-media-next:hover {
+  background-color: #414868;
+  color: #7aa2f7;
+}
+
+#custom-media.Playing {
+  color: #a6e3a1; /* Green text when playing */
+}
+
+#custom-media.Paused {
+  color: #fab387; /* Orange text when paused */
 }
 
 #cpu {
   color: #bb9af7;
+  margin-right: 0;
+  margin-left: 0;
+  border-radius: 0;
 }
 
 #memory {
   color: #7dcfff;
+  margin-right: 0;
+  margin-left: 0;
+  border-radius: 0;
 }
 
 #memory.critical {
   color: #ff5555;
+  margin-right: 0;
+  margin-left: 0;
+  border-radius: 0;
 }
 
 #temperature.critical {
   background-color: #f7768e;
   color: #1a1b26;
+  margin-right: 0;
+  margin-left: 0;
+  border-radius: 0;
 }
 
 #backlight {
   color: #e0af68;
+  margin-right: 0;
+  margin-left: 0;
+  border-radius: 0;
 }
 
 #battery {
   color: #9ece6a;
+  margin-left: 0;
+  border-radius: 0 8px 8px 0;
 }
 
 #power-profiles-daemon {
   color: #7dcfff;
+  margin-right: 0;
+  border-radius: 8px 0 0 8px;
 }
 
 #battery.charging, #battery.plugged {
   color: #9ece6a;
+  margin-left: 0;
+  border-radius: 0 8px 8px 0;
 }
 
 @keyframes blink {
@@ -151,6 +238,8 @@ window#waybar {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+  margin-left: 0;
+  border-radius: 0 8px 8px 0;
 }
 
 #keyboard-state {

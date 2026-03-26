@@ -9,23 +9,38 @@
     "include": ["~/.config/waybar/modules.json"],
 
     // Choose the order of the modules
-    "modules-left": [
-      "hyprland/workspaces"
-    ],
-    "modules-center": [
-      "custom/exit",
-      "clock",
-      "custom/upgrades"
-    ],
-    "modules-right": [
+    "group/media-player": {
+      "orientation": "horizontal",
+      "modules": [
         "pulseaudio",
+        "custom/media-prev",
+        "custom/media",
+        "custom/media-next"
+      ]
+    },
+    "group/hardware": {
+      "orientation": "horizontal",
+      "modules": [
+        "power-profiles-daemon",
         "network",
         "temperature",
         "cpu",
         "memory",
-        "power-profiles-daemon",
         "backlight",
-        "battery",
-		"custom/notification"
+        "battery"
+      ]
+    },
+
+    "modules-left": [
+      "custom/exit",
+      "clock",
+      "group/media-player"
+    ],
+    "modules-center": [
+      "hyprland/workspaces"
+    ],
+    "modules-right": [
+      "group/hardware",
+      "custom/notification"
     ]
 }

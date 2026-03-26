@@ -6,19 +6,46 @@ programs=(
     curl
     vim
     htop
-	waybar
-	wofi
-	rofi
-	hyprland
-	hyprpaper
-	hypridle
-	hyprlock
-	neovim
-	wlogout
-	alacritty
-	cliphist
-)
+    waybar
+    rofi
+    zsh
+    hyprland
+    hyprpaper
+    hypridle
+    hyprlock
+    neovim
+    wlogout
+    alacritty
+    cliphist
 
+    # hyprland build deps
+    cmake
+    meson
+    ninja-build
+    gcc-c++
+    pkgconf-pkg-config
+
+    hyprcursor-devel
+    hyprlang-devel
+    aquamarine-devel
+    tomlplusplus-devel
+
+    libXcursor-devel
+    libdrm-devel
+    libinput-devel
+    mesa-libgbm-devel
+    re2-devel
+
+    wayland-devel
+    wayland-protocols-devel
+
+    xcb-util-devel
+    xcb-util-wm-devel
+    xcb-util-image-devel
+    xcb-util-keysyms-devel
+    xcb-util-renderutil-devel
+    xcb-util-errors-devel
+)
 if command -v apt >/dev/null; then
     pm="apt"
     sudo apt update
