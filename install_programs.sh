@@ -17,6 +17,7 @@ programs=(
     wlogout
     alacritty
     cliphist
+	ranger
 
     # hyprland build deps
     cmake

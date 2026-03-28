@@ -112,44 +112,83 @@ source $ZSH/oh-my-zsh.sh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 
+autoload -U compinit && compinit
+autoload -U colors && colors
+autoload -Uz bashcompinit && bashcompinit
+autoload -U add-zsh-hook
+
+zstyle ':completion:*' menu select
+
 setopt autocd
+setopt auto_menu menu_complete
+
+source <(fzf --zsh)
 
 # ALIASES
-alias vi='vimx'
-alias ll='ls -alF'
-alias la='ls -A'
-alias lm='ls --almost-all'
-alias l='ls -CF'
+alias ls='eza --icons --group-directories-first'
+alias ll='eza -lh --icons --group-directories-first'
+alias la='eza -lha --icons --group-directories-first'
+alias tree='eza --tree --icons'
+alias cat='bat --paging=never'
 alias rm='trash-put' # Safe rm
 alias cls='printf "\e[H\e[2J"'
 alias ext='exit'
-alias scb='source ~/.bashrc'
 alias scv='source .venv/bin/activate' # source python enviroment
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
 ## Core programs aliases
+alias v='vimx'
 alias py='python3'
 alias mk='make'
 alias nv='nvim'
+
 ## Tmux
-alias tm='tmux'
-alias tml='tmux ls'
-alias tmk='tmux kill-session -t'
-alias tmks='tmux kill-server'
-alias tmn='tmux new -s'
-alias tmc='tmux new-session -s tmp -c'
-alias tma='tmux attach'
+alias t='tmux'
+alias tl='tmux ls'
+alias tk='tmux kill-session -t'
+alias tks='tmux kill-server'
+alias ta='tmux attach'
+
 ## Docker
 alias dk='docker'
-alias dkps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dkps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}"'
 alias dkl='docker logs --tail=100'
-alias dkc='docker-compose'
+alias dkc='docker compose'
+
 ## Git
-alias gt='git'
+### Note: Some are already defined by the plugin, but I put them here to be visible easily
 alias gs='git status -s'
+alias gc='git commit -m'
+alias gp='git push'
+alias gl='git pull'
+alias glm='git pull origin $(git_main_branch)'
+alias gk='git checkout'
+alias glgg='git log log --oneline --graph --all --decorate'
+alias gdff='git diff --output-indicator-new='+' --output-indicator-old='-''
+alias lg='lazygit'
+
 ## Alert for long-running commands
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# Global alias
+alias -g J='| jq'
+alias -g C='| wl-copy'
+
+# HOOKS
+_auto_venv() {
+  if [[ -d ".venv" && -f ".venv/bin/activate" ]]; then
+    source .venv/bin/activate
+  elif [[ -n "$VIRTUAL_ENV" ]]; then
+    deactivate
+  fi
+}
+
+add-zsh-hook chpwd _auto_venv
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH="$HOME/.cargo/bin:$PATH"
+
+[ -f "/home/carburauto/.ghcup/env" ] && . "/home/carburauto/.ghcup/env" # ghcup-env
