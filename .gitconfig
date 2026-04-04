@@ -1,6 +1,6 @@
 [user]
-	email = 108361383+synthbe@users.noreply.github.com
-	name = synthbe
+	email = 108361383+pedomiguel@users.noreply.github.com
+	name = pedomiguel
 
 [alias]
 	st = status -s
@@ -22,21 +22,28 @@
 	followTags = true
 	default = current
 
+[fetch]
+	prune = true
+
+[rerere]
+    enabled = true
+
 [help]
     autocorrect = 1
 
 [pull]
 	rebase = true
+	autostash = true
 
 [rebase]
-	autoStash = true
+	autoStash = false
 	missingCommitsCheck = warn
 
 [core]
 	editor = nvim
-	compression = 9
 	whitespace = error
 	preloadindex = true
+	pager = less -FX
 
 [advice]
 	addEmptyPathspec = false
@@ -61,3 +68,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[pager]
+    stash = false
+    branch = false
