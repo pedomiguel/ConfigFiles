@@ -54,7 +54,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -117,6 +117,8 @@ autoload -U colors && colors
 autoload -Uz bashcompinit && bashcompinit
 autoload -U add-zsh-hook
 
+eval "$(zoxide init zsh --cmd cd)"
+
 zstyle ':completion:*' menu select
 
 setopt autocd
@@ -154,7 +156,7 @@ alias ta='tmux attach'
 ## Docker
 alias dk='docker'
 alias dkps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}"'
-alias dkl='docker logs --tail=100'
+alias dkl='docker logs'
 alias dkc='docker compose'
 
 ## Git
