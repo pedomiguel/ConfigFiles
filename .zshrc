@@ -16,6 +16,8 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=nvim
+export KEYTIMEOUT=1
+export FZF_DEFAULT_OPTS='--bind=tab:down,shift-tab:up'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -55,6 +57,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
+# %R is the suggested correction, %r is the original typo
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -83,7 +86,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting docker docker-compose aws)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,6 +114,8 @@ source $ZSH/oh-my-zsh.sh
 # - $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
+
+bindkey -v
 
 autoload -U compinit && compinit
 autoload -U colors && colors
@@ -154,20 +159,22 @@ alias tks='tmux kill-server'
 alias ta='tmux attach'
 
 ## Docker
-alias dk='docker'
-alias dkps='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}"'
-alias dkl='docker logs'
-alias dkc='docker compose'
+alias d='docker'
+alias dp='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}"'
+alias dl='docker logs'
+alias dc='docker compose'
 
 ## Git
 ### Note: Some are already defined by the plugin, but I put them here to be visible easily
 alias gs='git status -s'
+alias gss='git status'
 alias gc='git commit -m'
 alias gp='git push'
+alias gsh='git stash'
 alias gl='git pull'
 alias glm='git pull origin $(git_main_branch)'
 alias gk='git checkout'
-alias glgg='git log log --oneline --graph --all --decorate'
+alias glgg='git log --oneline --graph --all --decorate'
 alias gdff='git diff --output-indicator-new='+' --output-indicator-old='-''
 alias lg='lazygit'
 
@@ -194,3 +201,6 @@ add-zsh-hook chpwd _auto_venv
 export PATH="$HOME/.cargo/bin:$PATH"
 
 [ -f "/home/carburauto/.ghcup/env" ] && . "/home/carburauto/.ghcup/env" # ghcup-env
+
+# sentry
+fpath=("/home/carburauto/.local/share/zsh/site-functions" $fpath)
