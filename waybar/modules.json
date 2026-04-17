@@ -89,8 +89,8 @@
     "format-icons": {
       "default": "",
       "performance": "",
-      "balanced": " ",
-      "power-saver": " "
+      "balanced": "",
+      "power-saver": ""
     }
   },
 
@@ -163,7 +163,8 @@
   "custom/media": {
     "format": "{icon} {text}",
     "return-type": "json",
-    "max-length": 40,
+    "max-length": 20,
+    "min-length": 20,
     "format-icons": {
       "Playing": "󰏤",
       "Paused": ""
