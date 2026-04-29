@@ -1,50 +1,43 @@
-* {
-	background-image: none;
-	box-shadow: none;
-}
-
+/* Window background - set to transparent so the compositor can blur */
 window {
-	background-color: rgba(12, 12, 12, 0.9);
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
+/* Button setup - equally divided columns */
 button {
-    border-radius: 0;
-    border-color: black;
-	text-decoration-color: #FFFFFF;
+    margin: 10px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(30, 30, 30, 0.4);
     color: #FFFFFF;
-	background-color: #1E1E1E;
-	border-style: solid;
-	border-width: 1px;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 25%;
+    font-family: "Ubuntu Nerd Font", "Sans-Serif"; /* Change to your preferred font */
+    font-size: 16px;
+
+    /* Icon positioning (Top half of button) */
+    background-repeat: no-repeat;
+    background-position: center 35%; /* Lifts icon up to make room for text */
+    background-size: 30%;
+
+    /* Text positioning (Bottom half of button) */
+    text-shadow: none;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
 }
 
-button:focus, button:active, button:hover {
-	background-color: #3700B3;
-	outline-style: none;
+/* Hover & Focus Effects */
+button:focus,
+button:active,
+button:hover {
+    background-color: rgba(187, 134, 252, 0.2); /* Subtle glow bg */
+    border: 1px solid #BB86FC;
+    color: #BB86FC; /* Text changes color on hover */
+    outline: none;
+    box-shadow: 0 0 10px rgba(187, 134, 252, 0.3);
 }
 
-#lock {
-    background-image: image(url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
-}
-
-#logout {
-    background-image: image(url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
-}
-
-#suspend {
-    background-image: image(url("/usr/share/wlogout/icons/suspend.png"), url("/usr/local/share/wlogout/icons/suspend.png"));
-}
-
-#hibernate {
-    background-image: image(url("/usr/share/wlogout/icons/hibernate.png"), url("/usr/local/share/wlogout/icons/hibernate.png"));
-}
-
-#shutdown {
-    background-image: image(url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
-}
-
-#reboot {
-    background-image: image(url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
-}
+/* Icons - Update these to your specific button labels */
+#lock      { background-image: image(url("/usr/share/wlogout/icons/lock.png")); }
+#logout    { background-image: image(url("/usr/share/wlogout/icons/logout.png")); }
+#suspend   { background-image: image(url("/usr/share/wlogout/icons/suspend.png")); }
+#reboot    { background-image: image(url("/usr/share/wlogout/icons/reboot.png")); }
+#shutdown  { background-image: image(url("/usr/share/wlogout/icons/shutdown.png")); }

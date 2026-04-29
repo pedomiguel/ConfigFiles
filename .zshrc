@@ -56,7 +56,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 # %R is the suggested correction, %r is the original typo
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -68,7 +68,7 @@ ENABLE_CORRECTION="true"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -76,7 +76,7 @@ ENABLE_CORRECTION="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -122,11 +122,8 @@ autoload -U colors && colors
 autoload -Uz bashcompinit && bashcompinit
 autoload -U add-zsh-hook
 
-eval "$(zoxide init zsh --cmd cd)"
-
 zstyle ':completion:*' menu select
 
-setopt autocd
 setopt auto_menu menu_complete
 
 source <(fzf --zsh)
@@ -138,8 +135,7 @@ alias la='eza -lha --icons --group-directories-first'
 alias tree='eza --tree --icons'
 alias cat='bat --paging=never'
 alias rm='trash-put' # Safe rm
-alias cls='printf "\e[H\e[2J"'
-alias ext='exit'
+alias c='printf "\e[H\e[2J"'
 alias scv='source .venv/bin/activate' # source python enviroment
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -160,9 +156,13 @@ alias ta='tmux attach'
 
 ## Docker
 alias d='docker'
-alias dp='docker ps --format "table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}"'
+alias dp='docker ps --format "table {{.Status}}\t{{.Names}}"'
+alias dpp='docker ps --format "table {{.ID}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}"'
+alias dpa='docker ps -a --format "table {{.ID}}\t{{.Status}}\t{{.Names}}"'
 alias dl='docker logs'
 alias dc='docker compose'
+alias dcu='docker compose up'
+alias dcd='docker compose down'
 
 ## Git
 ### Note: Some are already defined by the plugin, but I put them here to be visible easily
@@ -177,6 +177,11 @@ alias gk='git checkout'
 alias glgg='git log --oneline --graph --all --decorate'
 alias gdff='git diff --output-indicator-new='+' --output-indicator-old='-''
 alias lg='lazygit'
+
+## AI
+alias cld='claude'
+alias cldc='claude --continue'
+alias cldr='claude --resume'
 
 ## Alert for long-running commands
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -204,3 +209,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # sentry
 fpath=("/home/carburauto/.local/share/zsh/site-functions" $fpath)
+
+# zoxide
+eval "$(zoxide init zsh --cmd cd)"
