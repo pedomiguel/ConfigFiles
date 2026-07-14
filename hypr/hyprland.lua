@@ -1,0 +1,7 @@
+require("modules.definitions")
+require("modules.autostarters")
+require("modules.layouts")
+require("modules.hardwares")
+require("modules.rules")
+require("modules.binds")
+require("modules.plugins")
