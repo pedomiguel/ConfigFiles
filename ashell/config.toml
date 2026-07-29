@@ -29,7 +29,7 @@ outputs = "All"
 [modules]
 left   = [ "Tempo", "MediaPlayer" ]
 center = [ "Workspaces" ]
-right  = [ "SystemInfo", "Settings", "Notifications"]
+right  = [ "SystemInfo", "Settings", "SwayncNotifications"]
 
 # =============================================================================
 # Workspaces
@@ -84,7 +84,7 @@ format = "Fraction"   # Shows "used/total" like your "{used:0.1f}G/{total:0.1f}G
 [system_info.temperature]
 warn_threshold  = 60
 alert_threshold = 80
-sensor = "Cpu"
+sensor = "coretemp Package id 0"
 
 # =============================================================================
 # Media Player
@@ -107,8 +107,9 @@ format           = "%H:%M"
 show_timestamps  = true
 show_bodies      = true
 toast            = true
+grouped          = true
 toast_position   = "bottom_right"   # Matches your bottom bar position
-toast_timeout    = 3000
+toast_timeout    = 2000
 
 # =============================================================================
 # Settings panel
@@ -192,3 +193,15 @@ strong = "#414868"   # muted/disconnected states (#pulseaudio.muted, #network.di
 
 [appearance.menu]
 opacity = 0.7
+
+[[CustomModule]]
+name = "SwayncNotifications"
+type = "Button"
+icon = "󰂚"
+command = "swaync-client -t -sw"
+listen_cmd = "swaync-client -swb"
+icons.'^dnd-none$' = "󰂛"
+icons.'^dnd-notification$' = "󰪑"
+icons.'^notification$' = "󱅫"
+icons.'^none$' = "󰂚"
+alert = "notification"

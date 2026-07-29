@@ -2,7 +2,7 @@ hl.config({
 	input = {
 		kb_layout = "br",
 		kb_variant = "abnt2",
-		kb_options = "ctrl:nocaps",
+		kb_options = "",
 		kb_model = "",
 		kb_rules = "",
 		repeat_delay = 200,

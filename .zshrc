@@ -138,9 +138,10 @@ alias la='eza -lha --icons --group-directories-first'
 alias tree='eza --tree --icons'
 alias cat='bat --paging=never'
 alias rm='trash-put' # Safe rm
-alias c='printf "\e[H\e[2J"'
-alias scv='source .venv/bin/activate' # source python enviroment
 alias s='sudo'
+alias sd='sudo dnf'
+alias sdi='sudo dnf install'
+alias sdu='sudo dnf upgrade'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -211,13 +212,19 @@ function _clear_prompt() {
 	clear
 	zle reset-prompt
 }
+function _exit_shell() {
+  zle -I
+  exit
+}
 
 zle -N _launch_claude_code
 zle -N _clear_prompt
+zle -N _exit_shell
 
 # Bindkeys
 bindkey '^Xc' _launch_claude_code
 bindkey '^Xx' _clear_prompt
+bindkey '^Xe' _exit_shell
 bindkey '^[[C' autosuggest-accept
 bindkey '^[[1;5C' forward-word
 
