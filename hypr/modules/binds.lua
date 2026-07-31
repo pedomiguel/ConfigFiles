@@ -23,6 +23,7 @@ local browser = _G.browser
 local fileManager = _G.fileManager
 local fileBrowser = _G.fileBrowser
 local windowManager = _G.windowManager
+local calculator = _G.calculator
 local powerManager = _G.powerManager
 
 -- Just for master layout
@@ -34,6 +35,7 @@ hl.bind(mainMod .. " + " .. "Space", hl.dsp.layout("swapwithmaster"))
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(fileBrowser))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(windowManager))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(calculator))
 
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
